@@ -11,10 +11,11 @@
 #import "FavoritesViewController.h"
 #import "Photo.h"
 #define kURL @"https://api.instagram.com/v1/media/popular?client_id=b7cbf00db1e143e9b84a787ed2c70f78"
-#define kURLSearchTag @""
+#define kURLSearchTag @"https://api.instagram.com/v1/tags/%@/media/recent?client_id=b7cbf00db1e143e9b84a787ed2c70f78"
 
 @interface ViewController () <UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property NSArray *data;
+@property NSMutableArray *allSearchPhotosArray;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -26,7 +27,7 @@
     {
     [super viewDidLoad];
 
-    [self loadJSONData];
+    [self initialLoadJSONData];
 
     }
 
@@ -66,65 +67,30 @@
 }
 
 
-#pragma mark = UITextFieldDelegate method
+#pragma mark = UITextFieldDelegate method for search
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (![self.searchTextField.text isEqualToString:@""])
     {
-        NSString *searchString = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=b7cbf00db1e143e9b84a787ed2c70f78", self.searchTextField.text];
-         [self.searchTextField resignFirstResponder];
-        NSURL *url = [NSURL URLWithString:searchString];
+        NSString *searchString = [NSString stringWithFormat:kURLSearchTag, self.searchTextField.text];
 
+        [self tagSearchJSONData:searchString];
 
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-
-        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            if (connectionError)
-            {
-                NSLog(@"Yo you have an error: %@", connectionError.localizedDescription);
-            }
-            else
-            {
-                NSDictionary *APIResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-
-
-
-                self.data = [APIResult objectForKey:@"data"];
-                [self.collectionView reloadData];
-                
-            }
-            
-        }];
+        [self.searchTextField resignFirstResponder];
 
     }
     return YES;
 }
 
--(void)dataWithURLString:(NSString *)urlString
-{
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (connectionError)
-        {
-            [self networkAlertWindow:connectionError.localizedDescription];
-        }
-    }];
-}
 
--(void)networkAlertWindow:(NSString *)message
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network error" message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"Gosh Darnit" style:UIAlertActionStyleDefault handler:nil];
-    [alert addAction:okButton];
-    [self presentViewController:alert animated:YES completion:nil];
-}
+#pragma mark = Network calls
 
-
--(void)loadJSONData
+-(void)initialLoadJSONData
 {
     NSURL *url = [NSURL URLWithString:kURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
+
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError)
         {
@@ -134,12 +100,35 @@
         {
             NSDictionary *APIResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             self.data = [APIResult objectForKey:@"data"];
+
             [self.collectionView reloadData];
 
         }
     }];
 }
 
+-(void)tagSearchJSONData:(NSString *)urlString
+{
+    self.allSearchPhotosArray = [NSMutableArray array];
+    NSURL *url = [NSURL URLWithString:urlString];
 
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+     {
+         if (connectionError)
+         {
+             NSLog(@"Yo you have an error: %@", connectionError.localizedDescription);
+         }
+         else
+         {
+             NSDictionary *APIResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+             self.data = [APIResult objectForKey:@"data"];
+             [self.collectionView reloadData];
+
+         }
+
+     }];
+
+}
 
 @end
