@@ -101,6 +101,13 @@
             NSDictionary *APIResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             self.data = [APIResult objectForKey:@"data"];
 
+            for (NSDictionary *photoDictionary in self.data)
+            {
+                Photo *instagramPhoto = [[Photo alloc]initWithDictionary:photoDictionary];
+                [self.allSearchPhotosArray addObject:instagramPhoto];
+            }
+
+
             [self.collectionView reloadData];
 
         }
@@ -123,6 +130,13 @@
          {
              NSDictionary *APIResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
              self.data = [APIResult objectForKey:@"data"];
+
+             for (NSDictionary *photoDictionary in self.data)
+             {
+                 Photo *instagramPhoto = [[Photo alloc]initWithDictionary:photoDictionary];
+                 [self.allSearchPhotosArray addObject:instagramPhoto];
+             }
+             
              [self.collectionView reloadData];
 
          }
