@@ -28,7 +28,7 @@
     {
     [super viewDidLoad];
         self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-    [self initialLoadJSONData];
+        [self initialLoadJSONData];
 
     }
 
@@ -92,15 +92,23 @@
     return YES;
 }
 
-#pragma mark - Favorite Button
+#pragma mark - Favorite Buttons
+
 - (IBAction)onFavoriteButtonPressed:(Photo *)selectedPhoto
 {
-
+    //Add photo to favorites button
     NSLog(@"PHOTO ADDED TO FAVORITES");
     self.favoritedPhotosArray = [NSMutableArray new];
     [self.favoritedPhotosArray addObject:selectedPhoto];
-  
+
+
 }
+
+- (IBAction)viewFavoritesButtonPressed:(UIButton *)sender
+{
+    NSLog(@"Favorites button pressed");
+}
+
 
 
 #pragma mark = Network calls

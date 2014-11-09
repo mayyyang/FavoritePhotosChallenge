@@ -2,50 +2,36 @@
 //  FavoritesViewController.m
 //  FavoritePhotosChallenge
 //
-//  Created by May Yang on 11/7/14.
+//  Created by May Yang on 11/9/14.
 //  Copyright (c) 2014 May Yang. All rights reserved.
 //
 
 #import "FavoritesViewController.h"
-#import "SelectedImageCollectionViewCell.h"
 
-@interface FavoritesViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface FavoritesViewController ()
 
 @end
 
 @implementation FavoritesViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-
+    // Do any additional setup after loading the view.
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    SelectedImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"favoriteCell" forIndexPath:indexPath];
-
-    NSDictionary *metaDictionary = self.photoArray[indexPath.row];
-    NSDictionary *images = [metaDictionary objectForKey:@"images"];
-    NSDictionary *standardRes = [images objectForKey:@"standard_resolution"];
-    NSString *urlJPG = [standardRes objectForKey:@"url"];
-
-
-
-    NSURL *url = [NSURL URLWithString:urlJPG];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        cell.selectedImageView.image = [UIImage imageWithData:data];
-    }];
-
-
-    return cell;
-
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return 9;
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
+*/
 
 @end

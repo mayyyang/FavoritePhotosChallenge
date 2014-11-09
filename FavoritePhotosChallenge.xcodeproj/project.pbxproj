@@ -16,6 +16,7 @@
 		FB2FC30D1A0C3E9D00CE72C5 /* FavoritePhotosChallengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2FC30C1A0C3E9D00CE72C5 /* FavoritePhotosChallengeTests.m */; };
 		FB4399A71A0D75980050CF8D /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4399A61A0D75980050CF8D /* ImageCollectionViewCell.m */; };
 		FB4399B21A0D894C0050CF8D /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4399B11A0D894C0050CF8D /* Photo.m */; };
+		FB4B41FA1A0FAA3D00AB87B2 /* SelectedDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB4B41F91A0FAA3D00AB87B2 /* SelectedDataViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,8 @@
 		FB4399A61A0D75980050CF8D /* ImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionViewCell.m; sourceTree = "<group>"; };
 		FB4399B01A0D894C0050CF8D /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		FB4399B11A0D894C0050CF8D /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		FB4B41F81A0FAA3D00AB87B2 /* SelectedDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedDataViewController.h; sourceTree = "<group>"; };
+		FB4B41F91A0FAA3D00AB87B2 /* SelectedDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedDataViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,8 @@
 			children = (
 				FB4399B01A0D894C0050CF8D /* Photo.h */,
 				FB4399B11A0D894C0050CF8D /* Photo.m */,
+				FB4399A51A0D75980050CF8D /* ImageCollectionViewCell.h */,
+				FB4399A61A0D75980050CF8D /* ImageCollectionViewCell.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -100,8 +105,8 @@
 				FB2FC2F51A0C3E9C00CE72C5 /* AppDelegate.m */,
 				FB2FC2F71A0C3E9C00CE72C5 /* ViewController.h */,
 				FB2FC2F81A0C3E9C00CE72C5 /* ViewController.m */,
-				FB4399A51A0D75980050CF8D /* ImageCollectionViewCell.h */,
-				FB4399A61A0D75980050CF8D /* ImageCollectionViewCell.m */,
+				FB4B41F81A0FAA3D00AB87B2 /* SelectedDataViewController.h */,
+				FB4B41F91A0FAA3D00AB87B2 /* SelectedDataViewController.m */,
 				FB04B8481A0F3998004B549F /* Model */,
 				FB2FC2FA1A0C3E9C00CE72C5 /* Main.storyboard */,
 				FB2FC2FD1A0C3E9C00CE72C5 /* Images.xcassets */,
@@ -240,6 +245,7 @@
 				FB4399B21A0D894C0050CF8D /* Photo.m in Sources */,
 				FB2FC2F91A0C3E9C00CE72C5 /* ViewController.m in Sources */,
 				FB2FC2F61A0C3E9C00CE72C5 /* AppDelegate.m in Sources */,
+				FB4B41FA1A0FAA3D00AB87B2 /* SelectedDataViewController.m in Sources */,
 				FB4399A71A0D75980050CF8D /* ImageCollectionViewCell.m in Sources */,
 				FB2FC2F31A0C3E9C00CE72C5 /* main.m in Sources */,
 			);

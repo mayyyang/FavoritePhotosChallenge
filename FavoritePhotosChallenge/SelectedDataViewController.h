@@ -1,5 +1,5 @@
 //
-//  FavoritesViewController.h
+//  SelectedDataViewController.h
 //  FavoritePhotosChallenge
 //
 //  Created by May Yang on 11/9/14.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FavoritesViewController : UIViewController
+@interface SelectedDataViewController : UIViewController
+@property NSMutableArray *favoritedPhotosArray;
 
 @end

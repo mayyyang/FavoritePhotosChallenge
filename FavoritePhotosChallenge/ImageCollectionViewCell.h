@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ImageCollectionViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
-
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (retain, nonatomic) IBOutlet UIImageView *favoritedImageView;
 @property UIImage *instaImage;
 
 

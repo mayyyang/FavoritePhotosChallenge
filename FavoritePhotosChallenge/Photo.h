@@ -12,6 +12,7 @@
 @interface Photo : NSObject
 @property NSData *instaDataImage;
 @property BOOL isSelected;
+@property NSMutableArray *selectedPhotoArray;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
