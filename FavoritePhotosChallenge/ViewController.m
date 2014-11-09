@@ -156,11 +156,6 @@
 }
 
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    FavoritesViewController *favoritesVC = segue.destinationViewController;
-//    favoritesVC.photoArray = self.data;
-//    
-//}
+
 
 @end

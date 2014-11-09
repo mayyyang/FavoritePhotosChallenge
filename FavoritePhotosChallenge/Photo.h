@@ -12,4 +12,6 @@
 @interface Photo : NSObject
 @property NSData *instaImage;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

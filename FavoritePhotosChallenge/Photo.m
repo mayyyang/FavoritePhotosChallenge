@@ -10,5 +10,18 @@
 
 @implementation Photo
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [super init];
+
+    NSDictionary *imagesDictionary = dictionary[@"images"];
+    NSDictionary *standardResolutionDictionary = imagesDictionary[@"standard_resolution"];
+    NSString *urlString = standardResolutionDictionary[@"url"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    self.instaImage = [NSData dataWithContentsOfURL:url];
+
+    return self;
+}
+
 
 @end
