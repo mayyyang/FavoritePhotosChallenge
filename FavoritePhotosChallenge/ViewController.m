@@ -27,7 +27,7 @@
 - (void)viewDidLoad
     {
     [super viewDidLoad];
-
+        self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     [self initialLoadJSONData];
 
     }

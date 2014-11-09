@@ -16,7 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
+//    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
     return YES;
 }
 
