@@ -11,6 +11,7 @@
 #import "FavoritesViewController.h"
 #import "Photo.h"
 #define kURL @"https://api.instagram.com/v1/media/popular?client_id=b7cbf00db1e143e9b84a787ed2c70f78"
+#define kURLSearchTag @""
 
 @interface ViewController () <UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property NSArray *data;
@@ -21,47 +22,14 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+    {
     [super viewDidLoad];
 
-    
-    NSURL *url = [NSURL URLWithString:kURL];
+    [self loadJSONData];
 
+    }
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (connectionError)
-        {
-            NSLog(@"Yo you have an error: %@", connectionError.localizedDescription);
-        }
-        else
-        {
-            NSDictionary *APIResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-
-
-
-            self.data = [APIResult objectForKey:@"data"];
-            [self.collectionView reloadData];
-
-            //            NSDictionary *metaDictionary = self.data;
-            //            NSDictionary *images = [metaDictionary objectForKey:@"images"];
-            
-        }
-
-    }];
-
-    
-
-}
-
-
-
-//- (void)loadInstagramPhotos
-//{
-//    NSDictionary *metaDictionary = self.data;
-//
-//}
 
 #pragma mark = UICollectionViewDelegate methods
 
@@ -123,9 +91,6 @@
 
                 self.data = [APIResult objectForKey:@"data"];
                 [self.collectionView reloadData];
-
-                //            NSDictionary *metaDictionary = self.data;
-                //            NSDictionary *images = [metaDictionary objectForKey:@"images"];
                 
             }
             
@@ -155,6 +120,25 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+
+-(void)loadJSONData
+{
+    NSURL *url = [NSURL URLWithString:kURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (connectionError)
+        {
+            NSLog(@"Yo you have an error: %@", connectionError.localizedDescription);
+        }
+        else
+        {
+            NSDictionary *APIResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            self.data = [APIResult objectForKey:@"data"];
+            [self.collectionView reloadData];
+
+        }
+    }];
+}
 
 
 
