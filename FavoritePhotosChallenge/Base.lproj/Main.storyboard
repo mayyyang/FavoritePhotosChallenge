@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c36-Lk-uCt">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gkb-MD-hhK">
                                     <size key="itemSize" width="320" height="320"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -43,6 +43,9 @@
                                                         <constraint firstAttribute="height" constant="22" id="pzr-Bo-sUO"/>
                                                     </constraints>
                                                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="onFavoriteButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gbt-W2-kJ9"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -68,10 +71,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="c36-Lk-uCt" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="BpG-yO-1J1"/>
-                            <constraint firstItem="c36-Lk-uCt" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="DUg-l0-lEl"/>
-                            <constraint firstAttribute="trailing" secondItem="c36-Lk-uCt" secondAttribute="trailing" id="ENJ-21-hfy"/>
-                            <constraint firstItem="c36-Lk-uCt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="rQp-jd-k02"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="c36-Lk-uCt" secondAttribute="bottom" id="07x-B1-1Nk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c36-Lk-uCt" secondAttribute="trailing" constant="-16" id="Gu1-5E-puv"/>
+                            <constraint firstItem="c36-Lk-uCt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="HiU-4o-foK"/>
+                            <constraint firstItem="c36-Lk-uCt" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="Ih4-bA-UZZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zua-u1-dlz">

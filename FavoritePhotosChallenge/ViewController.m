@@ -92,6 +92,16 @@
     return YES;
 }
 
+#pragma mark - Favorite Button
+- (IBAction)onFavoriteButtonPressed:(Photo *)selectedPhoto
+{
+
+    NSLog(@"PHOTO ADDED TO FAVORITES");
+    self.favoritedPhotosArray = [NSMutableArray new];
+    [self.favoritedPhotosArray addObject:selectedPhoto];
+  
+}
+
 
 #pragma mark = Network calls
 
