@@ -16,6 +16,7 @@
 @interface ViewController () <UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property NSArray *data;
 @property NSMutableArray *allSearchPhotosArray;
+@property NSMutableArray *favoritedPhotosArray;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -36,19 +37,27 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"instaCell" forIndexPath:indexPath];
-    NSDictionary *metaDictionary = self.data[indexPath.row];
-    NSDictionary *images = [metaDictionary objectForKey:@"images"];
-    NSDictionary *standardRes = [images objectForKey:@"standard_resolution"];
-    NSString *urlJPG = [standardRes objectForKey:@"url"];
+    ImageCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"instaCell" forIndexPath:indexPath];
 
+    if ([self.searchTextField.text isEqualToString:@""])
+    {
+        NSDictionary *metaDictionary = self.data[indexPath.row];
+        NSDictionary *images = [metaDictionary objectForKey:@"images"];
+        NSDictionary *standardRes = [images objectForKey:@"standard_resolution"];
+        NSString *urlJPG = [standardRes objectForKey:@"url"];
+        NSURL *url = [NSURL URLWithString:urlJPG];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            cell.imageView.image = [UIImage imageWithData:data];
+        }];
 
+    }
 
-    NSURL *url = [NSURL URLWithString:urlJPG];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        cell.imageView.image = [UIImage imageWithData:data];
-    }];
+    else
+    {
+        Photo *instagramPhoto = self.allSearchPhotosArray[indexPath.item];
+        cell.imageView.image = [UIImage imageWithData:instagramPhoto.instaDataImage];
+    }
 
 
     return cell;
@@ -100,13 +109,6 @@
         {
             NSDictionary *APIResult = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             self.data = [APIResult objectForKey:@"data"];
-
-            for (NSDictionary *photoDictionary in self.data)
-            {
-                Photo *instagramPhoto = [[Photo alloc]initWithDictionary:photoDictionary];
-                [self.allSearchPhotosArray addObject:instagramPhoto];
-            }
-
 
             [self.collectionView reloadData];
 

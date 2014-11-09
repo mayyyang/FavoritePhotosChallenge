@@ -18,7 +18,7 @@
     NSDictionary *standardResolutionDictionary = imagesDictionary[@"standard_resolution"];
     NSString *urlString = standardResolutionDictionary[@"url"];
     NSURL *url = [NSURL URLWithString:urlString];
-    self.instaImage = [NSData dataWithContentsOfURL:url];
+    self.instaDataImage = [NSData dataWithContentsOfURL:url];
 
     return self;
 }

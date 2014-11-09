@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TGm-tA-4GV">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -35,14 +36,24 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7xb-hX-3i5">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hh7-IY-cdx">
+                                                    <rect key="frame" x="290" y="290" width="22" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="9Oh-vI-kBN"/>
+                                                        <constraint firstAttribute="height" constant="22" id="pzr-Bo-sUO"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="7xb-hX-3i5" firstAttribute="top" secondItem="6NB-eI-bqY" secondAttribute="top" id="89w-Ss-yGg"/>
                                             <constraint firstAttribute="trailing" secondItem="7xb-hX-3i5" secondAttribute="trailing" id="9iu-bx-qoc"/>
+                                            <constraint firstItem="Hh7-IY-cdx" firstAttribute="trailing" secondItem="6NB-eI-bqY" secondAttribute="trailingMargin" id="FBx-DY-h3b"/>
                                             <constraint firstItem="7xb-hX-3i5" firstAttribute="leading" secondItem="6NB-eI-bqY" secondAttribute="leading" id="ibZ-Ue-4Bn"/>
                                             <constraint firstAttribute="bottom" secondItem="7xb-hX-3i5" secondAttribute="bottom" id="muO-S8-fnK"/>
+                                            <constraint firstItem="Hh7-IY-cdx" firstAttribute="bottom" secondItem="6NB-eI-bqY" secondAttribute="bottomMargin" id="znw-dZ-hmh"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="7xb-hX-3i5" id="sSr-Un-WdL"/>
@@ -65,7 +76,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zua-u1-dlz">
                         <nil key="title"/>
-                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="WrT-yk-Bfe">
+                        <textField key="titleView" clipsSubviews="YES" alpha="0.49999999999999961" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Search Item" minimumFontSize="17" id="WrT-yk-Bfe">
                             <rect key="frame" x="8" y="7" width="304" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -87,7 +98,7 @@
         <!--Navigation Controller-->
         <scene sceneID="j49-Hh-WoF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TGm-tA-4GV" sceneMemberID="viewController">
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="TGm-tA-4GV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="21b-aj-3zx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
