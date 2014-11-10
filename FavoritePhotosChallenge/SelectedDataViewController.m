@@ -8,8 +8,10 @@
 
 #import "SelectedDataViewController.h"
 #import "Photo.h"
+#import "ImageCollectionViewCell.h"
 
 @interface SelectedDataViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -17,19 +19,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.collectionView reloadData];
     
     
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    return nil;
+    ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"favoritesCell" forIndexPath:indexPath];
+    NSData *imageData = self.favoritedPhotosArray[indexPath.item];
+    cell.favoritedImageView.image = [UIImage imageWithData:imageData];
+    return cell;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 0;
+    return self.favoritedPhotosArray.count;
 }
 
 

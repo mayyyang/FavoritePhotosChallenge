@@ -78,7 +78,7 @@
                                 </state>
                                 <connections>
                                     <action selector="viewFavoritesButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Okz-mu-LY9"/>
-                                    <segue destination="oEu-Yq-Y8Q" kind="push" id="pdl-dY-dFA"/>
+                                    <segue destination="oEu-Yq-Y8Q" kind="push" identifier="segue" id="pdl-dY-dFA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -176,6 +176,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xPd-YK-RED"/>
+                    <connections>
+                        <outlet property="collectionView" destination="2Xm-WL-PZp" id="rtr-sW-9FL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2qi-JR-qph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

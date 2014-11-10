@@ -8,8 +8,8 @@
 
 #import "ViewController.h"
 #import "ImageCollectionViewCell.h"
-#import "FavoritesViewController.h"
 #import "Photo.h"
+#import "SelectedDataViewController.h"
 #define kURL @"https://api.instagram.com/v1/media/popular?client_id=b7cbf00db1e143e9b84a787ed2c70f78"
 #define kURLSearchTag @"https://api.instagram.com/v1/tags/%@/media/recent?client_id=b7cbf00db1e143e9b84a787ed2c70f78"
 
@@ -101,12 +101,19 @@
     self.favoritedPhotosArray = [NSMutableArray new];
     [self.favoritedPhotosArray addObject:selectedPhoto];
 
+    SelectedDataViewController *sdvc = [[SelectedDataViewController alloc]init];
+    sdvc.favoritedPhotosArray = self.favoritedPhotosArray;
+
 
 }
 
 - (IBAction)viewFavoritesButtonPressed:(UIButton *)sender
 {
     NSLog(@"Favorites button pressed");
+    SelectedDataViewController *sdvc = [[SelectedDataViewController alloc]init];
+    sdvc.favoritedPhotosArray = self.favoritedPhotosArray;
+
+//    [self performSegueWithIdentifier:@"segue" sender:sender];
 }
 
 
@@ -164,5 +171,11 @@
      }];
 
 }
+//
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    SelectedDataViewController *selectedVC = segue.destinationViewController;
+//    selectedVC.favoritedPhotosArray = self.favoritedPhotosArray;
+//}
 
 @end
