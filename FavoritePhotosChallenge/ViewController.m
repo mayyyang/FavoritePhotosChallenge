@@ -28,6 +28,7 @@
     {
     [super viewDidLoad];
         self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+        self.favoritedPhotosArray = [NSMutableArray new];
         [self initialLoadJSONData];
 
     }
@@ -98,7 +99,7 @@
 {
     //Add photo to favorites button
     NSLog(@"PHOTO ADDED TO FAVORITES");
-    self.favoritedPhotosArray = [NSMutableArray new];
+
     [self.favoritedPhotosArray addObject:selectedPhoto];
 
     SelectedDataViewController *sdvc = [[SelectedDataViewController alloc]init];
@@ -171,11 +172,11 @@
      }];
 
 }
-//
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    SelectedDataViewController *selectedVC = segue.destinationViewController;
-//    selectedVC.favoritedPhotosArray = self.favoritedPhotosArray;
-//}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SelectedDataViewController *selectedVC = segue.destinationViewController;
+    selectedVC.favoritedPhotosArray = self.favoritedPhotosArray;
+}
 
 @end
